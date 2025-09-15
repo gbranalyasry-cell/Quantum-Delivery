@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Delivery - توصيل من المستقبل | 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --secondary: #ff00d6;
+            --accent: #7bff00;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --light: #f0f8ff;
+            --gradient: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Neo Sans Arabic', 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 247, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 214, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(123, 255, 0, 0.03) 0%, transparent 80%);
+            min-height: 100vh;
+        }
+        
+        /* أنماط التمرير المخصصة */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient);
+            border-radius: 10px;
+        }
+        
+        /* التكبير والتحريك عند التمرير */
+        .scale-on-scroll {
+            transition: transform 0.5s ease;
+        }
+        
+        /* التنقل العائم */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 16, 0.8);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            background: rgba(5, 5, 16, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 1.2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: width 0.4s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .hologram-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-left: 1rem;
+        }
+        
+        .hologram-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 247, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .hologram-btn:hover::before {
+            left: 100%;
+        }
+        
+        .hologram-btn:hover {
+            background: rgba(0, 247, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* القسم الرئيسي مع تأثيرات ثلاثية الأبعاد */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            color: rgba(240, 248, 255, 0.8);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--gradient);
+            color: var(--darker);
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 247, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.6);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 247, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+        }
+        
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            perspective: 1000px;
+        }
+        
+        .floating-card {
+            position: absolute;
+            width: 300px;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .floating-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            transform: translateZ(40px) rotate(-5deg);
+            animation: float 8s infinite ease-in-out;
+            background: linear-gradient(145deg, rgba(0, 247, 255, 0.1), rgba(255, 0, 214, 0.1));
+        }
+        
+        .floating-card:nth-child(2) {
+            top: 50%;
+            right: 0;
+            transform: translateZ(20px) rotate(5deg);
+            animation: float 10s infinite ease-in-out;
+            animation-delay: -2s;
+            background: linear-gradient(145deg, rgba(255, 0, 214, 0.1), rgba(123, 255, 0, 0.1));
+        }
+        
+        .floating-card:nth-child(3) {
+            bottom: 0;
+            left: 25%;
+            transform: translateZ(60px) rotate(-3deg);
+            animation: float 9s infinite ease-in-out;
+            animation-delay: -4s;
+            background: linear-gradient(145deg, rgba(123, 255, 0, 0.1), rgba(0, 247, 255, 0.1));
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .floating-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        .floating-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* قسم الميزات بتصميم دائري متحرك */
+        .features {
+            padding: 8rem 5%;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 6rem;
+            position: relative;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 10px;
+        }
+        
+        .orbital-features {
+            position: relative;
+            height: 600px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .central-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 247, 255, 0.2);
+            animation: rotate 30s infinite linear;
+        }
+        
+        .central-orbit i {
+            font-size: 4rem;
+            color: var(--primary);
+        }
+        
+        .feature-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate 20s infinite linear reverse;
+        }
+        
+        .orbital-feature {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(5, 5, 16, 0.9);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform-origin: center;
+            transition: all 0.5s ease;
+        }
+        
+        .orbital-feature:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .orbital-feature:nth-child(2) {
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+        
+        .orbital-feature:nth-child(3) {
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+        
+        .orbital-feature:nth-child(4) {
+            top: 50%;
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+        
+        .orbital-feature:hover {
+            transform: translate(-50%, -50%) scale(1.1) !important;
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.4);
+            z-index: 10;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .orbital-feature h3 {
+            font-size: 1.2rem;
+            color: var(--light);
+            text-align: center;
+        }
+        
+        /* قسم التطبيقات بتصميم أفقي متحرك */
+        .apps-section {
+            padding: 8rem 5%;
+            background: rgba(5, 5, 16, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .apps-carousel {
+            display: flex;
+            gap: 3rem;
+            padding: 3rem 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .apps-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .app-card {
+            scroll-snap-align: start;
+            flex: 0 0 350px;
+            height: 450px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .app-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .app-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .download-btn {
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: var(--darker);
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.4);
+        }
+        
+        /* قسم الاتصال بتصميم تفاعلي */
+        .contact-section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--light);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-left: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .info-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        /* التذييل مع تأثيرات خاصة */
+        footer {
+            padding: 5rem 5% 2rem;
+            background: rgba(5, 5, 16, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--gradient);
+            color: var(--darker);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* أنماط النماذج المنبثقة */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(10, 10, 26, 0.9);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid rgba(0, 247, 255, 0.2);
+            box-shadow: 0 0 50px rgba(0, 247, 255, 0.3);
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.5s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+        }
+
+        .modal-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient);
+            color: var(--darker);
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .modal-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.4);
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .modal-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .modal-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* الرسوم المتحركة الرئيسية */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* استجابة للشاشات المتوسطة */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        /* استجابة للهواتف */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .floating-card {
+                width: 250px;
+                height: 320px;
+            }
+            
+            .orbital-features {
+                height: 400px;
+            }
+            
+            .feature-orbit {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .orbital-feature {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .orbital-feature h3 {
+                font-size: 1rem;
+            }
+            
+            .app-card {
+                flex: 0 0 300px;
+                height: 400px;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* تأثيرات خاصة للشاشات الكبيرة */
+        @media (min-width: 1600px) {
+            .hero-content, .features, .contact-grid, .footer-content {
+                max-width: 1400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-img">
+                <i class="fas fa-rocket"></i>
+            </div>
+            Quantum Delivery
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">الخدمات</a></li>
+            <li><a href="#">كيف نعمل</a></li>
+            <li><a href="#">التطبيقات</a></li>
+            <li><a href="#">الاتصال</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="hologram-btn" id="loginBtn">تسجيل الدخول</button>
+            <button class="hologram-btn" id="registerBtn">إنشاء حساب</button>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>توصيل طلبات من المستقبل</h1>
+                <p>اكتشف تجربة التوصيل الأكثر تقدمًا في العالم باستخدام تقنيات الذكاء الاصطناعي والطائرات المسيرة للوصول إليك في دقائق معدودة</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">اطلب الآن</a>
+                    <a href="#" class="btn-secondary">شاهد المزيد</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3>توصيل فائق السرعة</h3>
+                    <p>وصول الطلبات في أقل من 15 دقيقة باستخدام أحدث التقنيات</p>
+                </div>
+                <div class="floating-card">
+                    <div class="card-icon"><i class="fas fa-drone"></i></div>
+                    <h3>طائرات مسيرة ذكية</h3>
+                    <p>أسطول من الطائرات المسيرة المتطورة لتوصيل طلباتك بدقة</p>
+                </div>
+                <div class="floating-card">
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h3>خدمة روبوتية</h3>
+                    <p>روبوتات متطورة لخدمتكم على مدار الساعة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الميزات -->
+    <section class="features">
+        <h2 class="section-title">ميزاتنا المتطورة</h2>
+        <div class="orbital-features">
+            <div class="central-orbit">
+                <i class="fas fa-atom"></i>
+            </div>
+            <div class="feature-orbit"></div>
+            <div class="orbital-feature">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>سرعة خيالية</h3>
+            </div>
+            <div class="orbital-feature">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>أمان متكامل</h3>
+            </div>
+            <div class="orbital-feature">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <h3>صديق للبيئة</h3>
+            </div>
+            <div class="orbital-feature">
+                <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                <h3>متاح دائماً</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التطبيقات -->
+    <section class="apps-section">
+        <h2 class="section-title">حمّل تطبيقنا الآن</h2>
+        <div class="apps-carousel">
+            <div class="app-card">
+                <div class="app-icon"><i class="fab fa-apple"></i></div>
+                <h3>iOS</h3>
+                <p>حمّل تطبيقنا من متجر آبل واستمتع بتجربة مستخدم فريدة على أجهزة iOS</p>
+                <a href="#" class="download-btn">حمّل الآن</a>
+            </div>
+            <div class="app-card">
+                <div class="app-icon"><i class="fab fa-android"></i></div>
+                <h3>Android</h3>
+                <p>تطبيقنا متاح على متجر جوجل بلاي لجميع أجهزة أندروид</p>
+                <a href="#" class="download-btn">حمّل الآن</a>
+            </div>
+            <div class="app-card">
+                <div class="app-icon"><i class="fas fa-hologram"></i></div>
+                <h3>الواقع الافتراضي</h3>
+                <p>جرب تطبيقنا بتقنية الواقع الافتراضي لتجربة غامرة كأنك في المستقبل</p>
+                <a href="#" class="download-btn">جرب الآن</a>
+            </div>
+            <div class="app-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>الواقع معزز</h3>
+                <p>شاهد طلباتك تأتي إليك عبر تقنية الواقع المعزز المتطورة</p>
+                <a href="#" class="download-btn">جرب الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact-section">
+        <h2 class="section-title">اتصل بنا</h2>
+        <div class="contact-grid">
+            <div class="contact-form">
+                <h3 class="form-title">أرسل رسالة</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" placeholder="أدخل اسمك">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" class="form-control" rows="5" placeholder="اكتب رسالتك هنا"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">إرسال الرسالة</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3 class="info-title">معلومات التواصل</h3>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>العنوان</h4>
+                        <p>مدينة المستقبل، شارع التكنولوجيا، المربع 2099</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>الهاتف</h4>
+                        <p>+00996612345678</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>البريد الإلكتروني</h4>
+                        <p>info@quantumdelivery2099.neuro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quantum Delivery</h3>
+                <p>نحن رواد في مجال التوصيل بتقنيات المستقبل، نعمل على إرضاء عملائنا بأسرع وقت وأفضل جودة.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">عن الشركة</a></li>
+                    <li><a href="#">الخدمات</a></li>
+                    <li><a href="#">كيف نعمل</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>خدماتنا</h3>
+                <ul class="footer-links">
+                    <li><a href="#">التوصيل السريع</a></li>
+                    <li><a href="#">التوصيل بالطائرات المسيرة</a></li>
+                    <li><a href="#">التوصيل الروبوتي</a></li>
+                    <li><a href="#">التوصيل تحت الماء</a></li>
+                    <li><a href="#">التوصيل الفضائي</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>الاشتراك بالنشرة</h3>
+                <p>اشترك في نشرتنا البريدية لتصلك آخر التحديثات والعروض.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="بريدك الإلكتروني">
+                    </div>
+                    <button type="submit" class="download-btn">اشترك الآن</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Quantum Delivery.جميع الحقوق محفوظة للمصمم </p>
+        </div>
+    </footer>
+
+    <!-- نماذج تسجيل الدخول وإنشاء الحساب -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 class="modal-title">تسجيل الدخول</h2>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="loginEmail">البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" placeholder="أدخل بريدك الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">كلمة المرور</label>
+                    <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور" required>
+                </div>
+                <button type="submit" class="modal-submit">تسجيل الدخول</button>
+            </form>
+            <div class="modal-footer">
+                <p>ليس لديك حساب؟ <a id="goToRegister">إنشاء حساب</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 class="modal-title">إنشاء حساب</h2>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="registerName">الاسم الكامل</label>
+                    <input type="text" id="registerName" placeholder="أدخل اسمك الكامل" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">البريد الإلكتروني</label>
+                    <input type="email" id="registerEmail" placeholder="أدخل بريدك الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">كلمة المرور</label>
+                    <input type="password" id="registerPassword" placeholder="اختر كلمة مرور قوية" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">تأكيد كلمة المرور</label>
+                    <input type="password" id="confirmPassword" placeholder="أعد إدخال كلمة المرور" required>
+                </div>
+                <button type="submit" class="modal-submit">إنشاء حساب</button>
+            </form>
+            <div class="modal-footer">
+                <p>هل لديك حساب بالفعل؟ <a id="goToLogin">تسجيل الدخول</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تأثيرات التمرير
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // تأثير التكبير والتحريك للعناصر
+            const scaleElements = document.querySelectorAll('.scale-on-scroll');
+            scaleElements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                if (position < screenPosition) {
+                    element.style.transform = 'scale(1)';
+                    element.style.opacity = '1';
+                }
+            });
+        });
+        
+        // تهيئة تأثيرات التكبير والتحريك
+        document.querySelectorAll('.scale-on-scroll').forEach(element => {
+            element.style.transform = 'scale(0.9)';
+            element.style.opacity = '0';
+            element.style.transition = 'all 0.5s ease';
+        });
+        
+        // تأثيرات العناصر العائمة
+        document.querySelectorAll('.floating-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                this.style.transform = `translateZ(40px) rotate(${xAxis}deg) rotateY(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateZ(40px) rotate(0deg)';
+            });
+        });
+
+        // التحكم في نماذج التسجيل
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const goToRegister = document.getElementById('goToRegister');
+        const goToLogin = document.getElementById('goToLogin');
+
+        // فتح نموذج تسجيل الدخول
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // فتح نموذج إنشاء حساب
+        registerBtn.addEventListener('click', () => {
+            registerModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // إغلاق النماذج
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+                registerModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // الانتقال بين النماذج
+        goToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.remove('active');
+            registerModal.classList.add('active');
+        });
+
+        goToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.classList.remove('active');
+            loginModal.classList.add('active');
+        });
+
+        // إغلاق النماذج عند النقر خارج المحتوى
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === registerModal) {
+                registerModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // منع إغلاق النموذج عند النقر داخل المحتوى
+        document.querySelectorAll('.modal-content').forEach(content => {
+            content.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+</html>
